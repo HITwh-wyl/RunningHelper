@@ -1,4 +1,4 @@
-# sportcampus一秒自动签到及自动跑步
+# 自动签到
 源作者[sorakadoaoR](https://github.com/sorakadoaoR)&nbsp;&nbsp;&nbsp;&nbsp; 源项目地址[sportCampusSignHelper](https://github.com/sorakadoaoR/sportCampusSignHelper)
 ## 简介
 A Forked Running helper
