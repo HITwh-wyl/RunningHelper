@@ -61,7 +61,7 @@
 
     ### UUID
 
-    在请求高校体育的服务器时，请求头需要一个UUID字段，该字段应由设备的各种识别信息生成，可以通过下方的抓包方法获取，或者随意填写一个合法的uuid放在`uuid`字段即可
+    在请求sportcampus的服务器时，请求头需要一个UUID字段，该字段应由设备的各种识别信息生成，可以通过下方的抓包方法获取，或者随意填写一个合法的uuid放在`uuid`字段即可
 
     请注意，安卓版本没有`-`分割，iOS版本有`-`分割    
 
@@ -79,7 +79,7 @@
 
         将`useToken`属性设为`false`来使用这种登录方式
 
-        其中，`phone`和`password`字段为高校体育账号的手机号和密码。这些信息只会被发送到高校体育服务器。
+        其中，`phone`和`password`字段为sportcampus账号的手机号和密码。这些信息只会被发送到sportcampus服务器。
 
     ### 场地信息
 
@@ -101,7 +101,7 @@ Stream的使用教程可以参考[这个视频](https://www.bilibili.com/video/B
 
 1. 安装上述的抓包软件
 
-2. 打开高校体育，随意打开几个界面
+2. 打开sportcampus，随意打开几个界面
 
 3. 停止抓包，在结果中找到任意目标为`www.sportcampus.cn`请求，utoken、cookie、UUID在http请求头中，
 
@@ -109,7 +109,7 @@ Stream的使用教程可以参考[这个视频](https://www.bilibili.com/video/B
 
 ### 安卓
 
-由于安卓的新版高校体育启用了SSL Pinning，想抓包极其麻烦，建议直接手机密码登录，并通过信标（iBeacon）扫描软件当场扫描获取场地iBeacon信标信息
+由于安卓的新版sportcampus启用了SSL Pinning，想抓包极其麻烦，建议直接手机密码登录，并通过信标（iBeacon）扫描软件当场扫描获取场地iBeacon信标信息
 
 如果你执意要抓包，并拥有root设备，可以参考[这篇教程](https://blog.anzupop.com/posts/cracking-sportcampus/)，获取utoken、cookie等信息，然后抓取场地信标请求，并解密请求体即可获取iBeacon信标信息
 
@@ -117,7 +117,7 @@ Stream的使用教程可以参考[这个视频](https://www.bilibili.com/video/B
 
 以下结论均为脱壳+反编译得来，仅保证当前版本有效，推测服务端是是根据请求Header的Platform、versionCode字段来决定使用哪个平台的加解密和签名算法和哪个密钥
 
-## 安卓(高校体育版本号2.9.9)
+## 安卓(sportcampus版本号2.9.9)
 
 请求头versionCode: 522
 
@@ -129,7 +129,7 @@ sign算法为`md5(salt+"data"+JSON文本)`，salt值为`no32XZFSeXDmhfzpnVwPNCSC
 
 对于一些请求的data，新版用了AES/CBC/PKCS7Padding进行加密，**注意AES工作模式是CBC模式**，密钥为`rDWV58oToS6Wx2qU`，IV为`CCsq8Ik0bH6h4l3J`
 
-## iOS(高校体育版本号2.2.49)
+## iOS(sportcampus版本号2.2.49)
 
 请求头versionCode: 431
 
@@ -139,7 +139,7 @@ sign算法为`md5(salt+"data"+JSON文本)`，salt值为`MITY@*TeYBBZrBAYrLCm8U.2
 
 ### 加密
 
-高校体育使用`CCCrypt`方法进行加密，传递的`CCOption`是`0x3`，也就是`kCCOptionPKCS7Padding | kCCOptionECBMode`，**注意AES工作模式是ECB模式**，密钥为`OmZw5Vk9YRIctFbD`
+sportcampus使用`CCCrypt`方法进行加密，传递的`CCOption`是`0x3`，也就是`kCCOptionPKCS7Padding | kCCOptionECBMode`，**注意AES工作模式是ECB模式**，密钥为`OmZw5Vk9YRIctFbD`
 
 # 更新日志（2023.10.29）
 
@@ -149,19 +149,19 @@ v1.1: bug修复
 
 v1.2: 加入utoken登录方法
 
-v2.0: 支持了最新版本（2.9.8）的安卓版高校体育
+v2.0: 支持了最新版本（2.9.8）的安卓版sportcampus
 
-v2.1: 支持了最新版本（2.2.48）的iOS版本高校体育
+v2.1: 支持了最新版本（2.2.48）的iOS版本sportcampus
 
-v2.2：支持了iOS 2.2.49、Android2.9.9版本的高校体育
+v2.2：支持了iOS 2.2.49、Android2.9.9版本的sportcampus
 
 # 以下是如何远程跑步刷锻
 1.在电脑上下载雷神模拟器 <br>
-2.在浏览器上搜索fake location以及高校体育app进行下载（在雷神自带的应用中心中没有资源），其中fate location需要你充值9块一个月的会员专业版，
+2.在浏览器上搜索fake location以及sportcampusapp进行下载（在雷神自带的应用中心中没有资源），其中fate location需要你充值9块一个月的会员专业版，
 fakelocation界面如下，设置路径，记得更改速度和循环次数，启动模拟
 ![image](https://github.com/FAUST-BENCHOU/TJsportsCampusHelper/assets/126341483/12d26aa8-81a0-4745-9330-dad9d46143f9)
 
-3.雷神模拟器中打开高校体育，开始跑步即可（需要注意地图上是否已经出现途经点，没有途经点出现的话结束跑步并重来一次就行）<br>
+3.雷神模拟器中打开sportcampus，开始跑步即可（需要注意地图上是否已经出现途经点，没有途经点出现的话结束跑步并重来一次就行）<br>
 #### 具体跑步刷锻操作可参考[b站一片叶](https://www.bilibili.com/video/BV1BX4y1G7u3/?spm_id_from=333.880.my_history.page.click&vd_source=2b5cff4a90d42367005014f1d6d11ec0)
 
 
